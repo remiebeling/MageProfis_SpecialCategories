@@ -40,54 +40,7 @@ class MageProfis_SpecialCategories_Model_Catalog_Category_Relations extends Mage
     }
 
 
-    /**
-     * Save Value into Database
-     *
-     * @param string $arg_attribute Attribute Code
-     * @param string $arg_value     Attribute Value
-     * @param bool   $forceReload
-     * @param string $field
-     *
-     * @return type
-     */
-    public function setAttributeValue($arg_attribute, $arg_value, $forceReload = false, $field = 'value')
-    {
-        if (empty($arg_value))
-        {
-            return '';
-        }
-        $arg_value = trim($arg_value);
-        if ($forceReload || !isset($this->_attributeOptions[$arg_attribute]) || (isset($this->_attributeOptions[$arg_attribute]) && !count($this->_attributeOptions[$arg_attribute])))
-        {
-            $attribute_model = Mage::getModel('eav/entity_attribute');
-            $attribute_options_model = Mage::getModel('eav/entity_attribute_source_table');
-
-            $attribute_code = $attribute_model->getIdByCode('catalog_product', $arg_attribute);
-            $attribute = $attribute_model->load($attribute_code);
-
-            $attribute_options_model->setAttribute($attribute);
-            $options = $attribute_options_model->getAllOptions(false);
-            $this->_attributeOptions[$arg_attribute] = $options;
-        }
-
-        foreach ($this->_attributeOptions[$arg_attribute] as $option)
-        {
-            if (trim($option['label']) == trim($arg_value))
-            {
-                return $option[$field];
-            }
-        }
-        $attribute_model = Mage::getModel('eav/entity_attribute');
-        $attribute_code = $attribute_model->getIdByCode('catalog_product', $arg_attribute);
-        $attribute = $attribute_model->load($attribute_code);
-        $value = array('option' => array($arg_value));
-        $order = array('option' => 0);
-        $attribute->setData('option', array('value' => $value, 'order' => $order));
-        $attribute->save();
-
-        return $this->setAttributeValue($arg_attribute, trim($arg_value), true, $field);
-    }
-
+   
     public function getAffectedProducts($attribute_code, $ids = false)
     {
         $option_id = $this->getYesOptionId($attribute_code);
