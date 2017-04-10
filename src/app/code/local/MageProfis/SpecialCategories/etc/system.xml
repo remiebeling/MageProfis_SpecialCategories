@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <mageprofis translate="label" module="core">
+            <label>Mageprofis</label>
+            <sort_order>100</sort_order>
+        </mageprofis>
+    </tabs>
+    <sections>
+        <specialcategories translate="label" module="core">
+            <label>Special Categories</label>
+            <tab>mageprofis</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>90</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label">
+                    <label>Special Categories</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <mapping translate="label">
+                            <label>Mapping</label>
+                            <frontend_model>specialcategories/config_mapping</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </mapping>
+                    </fields>
+                </settings>
+            </groups>
+        </specialcategories>
+    </sections>
+</config>

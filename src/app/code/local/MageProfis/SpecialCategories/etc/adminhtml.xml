@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <catalog module="core">
+            <children>
+                <relations module="specialcategories" translate="title">
+                    <title>Set up Special Relations</title>
+                    <sort_order>2000</sort_order>
+                    <action>adminhtml/specialcategories/relations</action>
+                </relations>
+            </children>
+        </catalog>
+    </menu>
+</config>

@@ -1,0 +1,3 @@
+src/app/code/local/MageProfis/SpecialCategories/                   app/code/local/MageProfis/SpecialCategories/
+src/app/etc/modules/MageProfis_SpecialCategories.xml               app/etc/modules/MageProfis_SpecialCategories.xml
+src/app/locale/de_DE/MageProfis_SpecialCategories.csv              app/locale/de_DE/MageProfis_SpecialCategories.csv
