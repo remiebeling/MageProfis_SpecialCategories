@@ -39,24 +39,6 @@ class MageProfis_SpecialCategories_Model_Catalog_Category_Relations extends Mage
         }
     }
 
-    public function fillPseudoCategoryAttribute($product)
-    {
-        $cats = $product->getCategoryIds();
-        $cat = $this->getProductsCategory($cats);
-        
-        if ($cat && $cat->getName())
-        {
-            $option_id = $this->setAttributeValue('rc_pseudo_cat', $cat->getName());
-            
-            /*$product = Mage::getModel('catalog/product')->load($product->getId());
-            $product->setData('rc_pseudo_cat', $option_id);
-            $product->save();*/
-            
-            Mage::getSingleton('catalog/product_action')->updateAttributes(
-                    array($product->getId()), array('rc_pseudo_cat' => $option_id), 0
-            );
-        }
-    }
 
     /**
      * Save Value into Database
@@ -113,11 +95,7 @@ class MageProfis_SpecialCategories_Model_Catalog_Category_Relations extends Mage
                 ->addAttributeToFilter($attribute_code, $option_id)
                 ->addAttributeToSelect(array('sku', $attribute_code));
 
-        foreach ($products as $product)
-        {
-            $this->fillPseudoCategoryAttribute($product);
-        }
-        
+            
         if ($ids)
         {
             $products->getAllIds();
